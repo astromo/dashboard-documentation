@@ -1,0 +1,78 @@
+<div class="row">
+
+  <div class="small-12 columns">
+    <h2 ng-bind="api.name" class="api__name"></h2>
+    <p ng-bind-html="api.description | linky" class="api__description"></p>
+  </div>
+
+  <div class="small-3 columns api__navigation">
+
+    <!-- side navigation -->
+    <ul class="side-nav api__categories">
+      <li ng-repeat="category in api.categories">
+        <a href="#" ng-bind="category.attributes.name"></a>
+
+        <!-- sub categories -->
+        <ul class="api__sub-categories">
+          <li ng-repeat="resource in category.resources">
+            <a href="#" ng-bind="resource.name"></a>
+            <ul class="sub-category__actions" ng-repeat="action in resource.actions">
+              <span class="label radius" ng-class="action.method.toLowerCase()" ng-bind="action.method"></span>
+              <span ng-bind="action.name || (action.method + ' ' + resource.uriTemplate)"></span>
+            </ul>
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="small-9 columns">
+
+    <!-- contents -->
+    <div ng-repeat="category in api.categories">
+      <h4 ng-bind="category.attributes.name"></h4>
+      <span class="subheader" ng-bind="category.description[0]"></span>
+
+      <div ng-repeat="resource in category.resources">
+        <h5 ng-bind="resource.name"></h5>
+        <!-- actions -->
+        <div ng-repeat="action in resource.actions" class="api__action">
+          <div class="method__header" ng-class="action.method.toLowerCase()">
+            <span ng-bind="action.method"></span>
+            <span ng-bind="resource.uriTemplate"></span>
+          </div>
+          <p ng-bind="resource.description"></p>
+
+          <table class="api__parameters" ng-show="action.parameters.length > 0">
+
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="parameter in action.parameters">
+                <td ng-bind="parameter.name"></td>
+                <td ng-bind="parameter.type"></td>
+                <td ng-bind="parameter.required"></td>
+                <td ng-bind="parameter.description"></td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

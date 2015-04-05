@@ -1,0 +1,56 @@
+.documentation__api {
+
+  $grey   : darken($almost-white, 10);
+  $black  : lighten(#000, 40);
+
+  $get    : $blue;
+  $delete : $delete;
+  $put    : #f39c12;
+  $post   : $green;
+
+  .label, .api__method, .action__method {
+    &.get    { background-color: $get    !important; }
+    &.delete { background-color: $delete !important; }
+    &.post   { background-color: $post   !important; }
+    &.put    { background-color: $put    !important; }
+  }
+
+  .api__name {
+    border-bottom: solid 1px $almost-black;
+    margin-bottom: 20px;
+  }
+
+  .api__navigation {
+
+  }
+
+  .api__categories {
+    a { color: $black !important; }
+    a:hover {
+      background-color: transparent !important;
+      color: darken($black, 20) !important;
+    }
+  }
+
+  .api__sub-categories {
+    li {
+      list-style: none;
+      border-left: solid 2px $grey;
+      margin: 0;
+
+      &:hover { border-left: solid 2px $green; }
+    }
+  }
+
+  .api__action {
+
+    .method__header {
+      &.get    { color: $blue; }
+      &.delete { color: $red; }
+      &.post   { color: $green; }
+      &.put    { color: #f39c12; }
+    }
+
+  }
+
+}

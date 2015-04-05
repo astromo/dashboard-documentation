@@ -1,1 +1,13 @@
-<h2>Documentation</h2>
+<button data-dropdown="blueprints" aria-controls="blueprints" aria-expanded="false" class="button small dropdown" ng-bind="current.name" ng-show="hasBlueprints"></button>
+
+<ul id="blueprints" data-dropdown-content class="f-dropdown" aria-hidden="true">
+  <li ng-repeat="blueprint in blueprints">
+    <a ui-sref="dashboard.docs.blueprint({ blueprint: blueprint.slug })" ng-bind="blueprint.name"></a>
+  </li>
+</ul>
+
+<div ng-hide="hasBlueprints">
+  <p>You don't have any blueprints yet.</p>
+</div>
+
+<div ui-view class="documentation__api"></div>
